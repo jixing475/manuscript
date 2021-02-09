@@ -11,7 +11,7 @@ output:
   word_document:
     reference_docx: ms_style_template.docx
 bibliography: bibliography.bib
-csl: journal-of-ecology.csl
+csl: american-journal-of-science.csl
 ---
 
 ```{r setup, echo=FALSE, cache=FALSE, include=FALSE}
@@ -125,6 +125,7 @@ I'd like to thank the Academy and the Lorem Ipsum Foundation for their financial
 ##### pagebreak
 
 ### Reference
+
 
 ::: {#refs}
 :::

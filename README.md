@@ -1,9 +1,9 @@
-# Rmd2Word
+# RMarkdown write word manuscripts
 
 ## This repo contains:
 1. a template for knitting Rmarkdown manuscript drafts to Microsoft Word to share with collaborators (`ms_style_template.docx`)
 2. an Rmarkdown template for customizing your own document template (`ms_template.Rmd`)
-3. supporting files to make #2 realistically display a bibliography (`example.bibtex`) and citation formatting (`journal-of-ecology.csl`)
+3. supporting files to make #2 realistically display a bibliography (`bibliography.bib`) and citation formatting (`journal-of-ecology.csl`)
 
 ## To use this template
 1. Clone `ms_style_template.docx` into the working directory where your RMarkdown will be rendered.
@@ -19,7 +19,7 @@ title: "My awesome discovery"
 output:
   word_document:
     reference_docx: ms_style_template.docx
-bibliography: example.bibtex
+bibliography: bibliography.bib
 csl: journal-of-ecology.csl
 ---
 ```
