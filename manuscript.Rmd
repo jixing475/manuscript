@@ -1,5 +1,6 @@
 ---
-title: We found this really cool thing
+title: "We found this really cool thing"
+subtitle: A demonstration of Rmarkdown using Herman Bumpus' data
 author:
   - "First Author (1,*), Second Author (2), Third Author (2), Fourth Author (3), and Last Author (1)"
   - "_"
@@ -7,18 +8,36 @@ author:
   - "(2)Department of Unreplicable Research"
   - "(3)Instituto de Ciencias"
   - "*Email: first.author@awesomebio.edu"
+date: Biological and Environmental Sciences, University of Stirling, Stirling, UK,
+  FK9 4LA
 output:
-  word_document:
-    reference_docx: ms_style_template.docx
+  # pdf_document: default
+  # html_document: default
+  # word_document:
+  officedown::rdocx_document:
+    # reference_docx: ./template/ms_style_template.docx
+    reference_docx: ./template/StylesTemplate.docx
+header-includes:
+- \usepackage{fancyhdr}
+- \pagestyle{fancy}
+- \fancyhead[L]{DUTHIE, AB}
+- \fancyhead[R]{SPARROW BODY LENGTH DECREASES SURVIVAL}
+- \usepackage{lineno}
+- \linenumbers
+linestretch: 2
+link-citations: yes
+linkcolor: blue
+csl: ./csl/nature.csl
 bibliography: bibliography.bib
-csl: american-journal-of-science.csl
 ---
 
 ```{r setup, echo=FALSE, cache=FALSE, include=FALSE}
 library(knitr)
 library(tidyverse)
+library(officedown)
+library(officer)
 library(reticulate)
-reticulate::py_config()
+# reticulate::py_config()
 
 knitr::opts_knit$set(root.dir = usethis::proj_path())
 
@@ -34,6 +53,8 @@ opts_chunk$set(echo=TRUE,
 opts_knit$set(width=75)
 ```
 
+<!---BLOCK_TOC--->
+
 # Abstract
 
 1.  Big concept/challenge
@@ -46,9 +67,11 @@ opts_knit$set(width=75)
 
 5.  Take-home point
 
-Or as a paragraph In ut ligula non felis convallis egestas vitae non eros. Proin ut venenatis turpis. Vivamus at auctor neque, et pellentesque ante. Aliquam pellentesque semper viverra. Nullam in tempus risus. Etiam lorem leo, malesuada a nisl vitae, fermentum commodo neque. Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin suscipit, eros porttitor maximus consectetur, justo ligula eleifend leo, ac tincidunt libero odio eget eros. Morbi vulputate[@ertekin2007] euismod nisi sit amet lobortis. Nulla lectus eros, gravida vitae ligula mollis, varius posuere nulla. Phasellus accumsan tincidunt tellus quis egestas. Donec et nibh ut felis dictum vehicula. Nulla porttitor sodales quam, quis volutpat diam faucibus at.
+Or as a [@baell2010]paragraph In ut ligula non felis convallis egestas vitae non eros. Proin ut venenatis turpis. Vivamus at auctor neque, et pellentesque ante. Aliquam pellentesque semper viverra. Nullam in tempus risus. Etiam lorem leo, malesuada a nisl vitae, fermentum commodo neque. Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin suscipit, eros porttitor maximus consectetur, justo ligula eleifend leo, ac tincidunt libero odio eget eros. Morbi vulputate[@ertekin2007] euismod nisi sit amet lobortis. Nulla lectus eros, gravida vitae ligula mollis, varius posuere nulla. Phasellus accumsan tincidunt tellus quis egestas. Donec et nibh ut felis dictum vehicula. Nulla porttitor sodales quam, quis volutpat diam faucibus at.
 
-##### L5 pagebreak
+
+
+`r officer::run_pagebreak()`  
 
 # Introduction
 
@@ -58,9 +81,15 @@ Nam sollicitudin est nec augue venenatis posuere. Vivamus vehicula elit nec quam
 
 Here we...
 
+
+`r run_pagebreak()`  
+
 # Methods
 
 Nunc et purus ligula. Morbi nec eros in orci gravida placerat id id magna. Cras et euismod augue. Cras ac leo elit. In commodo ligula purus, eu egestas velit vestibulum vitae. Mauris tristique consequat felis at aliquam. Donec ipsum urna, efficitur sed cursus in, fermentum in eros.
+
+
+
 
 ## Our great model
 
@@ -98,11 +127,14 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ornare nunc eleifend
 
 Nunc et purus ligula. Morbi nec eros in orci gravida placerat id id magna. Cras et euismod augue. Cras ac leo elit. In commodo ligula purus, eu egestas velit vestibulum vitae. Mauris tristique consequat felis at aliquam. Donec ipsum urna, efficitur sed cursus in, fermentum in eros.
 
+
+
 # Results
 
 Ut mattis enim vitae purus consequat, eget euismod purus aliquam. Praesent fermentum magna ac est pellentesque, ac commodo mauris tempus. Praesent non accumsan velit. Morbi dictum velit sit amet dignissim malesuada. Duis lobortis hendrerit ipsum, quis dapibus odio euismod imperdiet. Etiam sed gravida lorem, suscipit vehicula dui. Praesent ornare ultrices mollis. Vestibulum ac laoreet mi, vel euismod massa. Suspendisse nec convallis orci. Aliquam sit amet sodales ipsum. Phasellus consectetur tristique urna, ut lobortis purus. Morbi convallis convallis orci ac ullamcorper. Praesent euismod tincidunt sem, et feugiat ligula cursus at. Nulla ullamcorper, erat eget pulvinar elementum, massa diam ultrices lectus, eget molestie neque ipsum in neque. Mauris ut aliquet dolor, a pretium erat. Phasellus ut elit non nisl congue consectetur.
 
 Quisque sit amet gravida orci, a iaculis nisl. In felis nisl, laoreet at massa posuere, consequat venenatis mauris. Mauris eu tortor rutrum, faucibus risus id, bibendum purus. Nunc egestas sagittis mauris id maximus. Etiam volutpat ipsum vel velit eleifend, eu sollicitudin ipsum elementum. Donec nibh tortor, tempor non dolor nec, sodales lobortis lacus. In commodo eget libero non efficitur. In non urna condimentum, scelerisque nulla vitae, facilisis mauris. Aliquam posuere, velit in mattis interdum, felis nisl convallis mi, eu vestibulum dui tellus eu elit. Nam in ipsum nisl.
+
 
 # Discussion
 
@@ -124,8 +156,7 @@ I'd like to thank the Academy and the Lorem Ipsum Foundation for their financial
 
 ##### pagebreak
 
-### Reference
-
+# Reference
 
 ::: {#refs}
 :::
@@ -167,7 +198,7 @@ myregtable<-car::Anova(lm(mpg~cyl*wt+am,data=mtcars),type=3)
 kable(myregtable)
 ```
 
-#####  pagebreak
+##### pagebreak
 
 # Appendix A
 
